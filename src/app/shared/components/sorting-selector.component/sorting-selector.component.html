@@ -1,0 +1,15 @@
+<div class="sort-container">
+  <label class="sort-label">Sort by</label>
+  <div class="select-wrapper">
+    <select
+      #sortSelect
+      class="sort-select"
+      [value]="currentFilter()"
+      (change)="currentFilter.set(sortSelect.value)"
+    >
+      @for (option of sortingInputs(); track option.value) {
+        <option [value]="option.value">{{ option.name }}</option>
+      }
+    </select>
+  </div>
+</div>

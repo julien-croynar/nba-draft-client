@@ -1,0 +1,33 @@
+<div class="player-banner"
+     [class.is-protected-card]="playerProtection()"
+     [style.--team-color]="team()?.primaryColor">
+
+  <div class="player-image-side" [style.background-image]="logoUrl()">
+    <img [src]="playerImageUrl()" [alt]="player().name" class="player-headshot">
+  </div>
+
+  <div class="player-details">
+    <span class="player-name">{{ player().name }}</span>
+    <span class="position">{{ player().stats.position }}</span>
+  </div>
+
+  <div class="player-stats-wrapper">
+    <div class="info-block">
+      <span class="label">2025-2026 stats</span>
+      <span class="value">{{ getStats() }}</span>
+      <span class="sub-label">{{ player().stats.gamePlayed }} Games Played</span>
+    </div>
+
+    <div class="info-block">
+      <span class="label">Current Salary</span>
+      <span class="value">{{ getSalary() }}</span>
+      <span class="sub-label">Option {{ player().contract.option }}</span>
+    </div>
+  </div>
+
+  <div class="protection-status" [class.is-protected]="playerProtection()">
+    <span class="status-text">
+      {{ playerProtection() ? 'PROTECTED' : 'UNPROTECTED' }}
+    </span>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="intro-container fade-in">
+  <div class="hero-section">
+    <h1>Welcome to the <span class="accent">NBA Expansion Draft</span> Simulator</h1>
+    <p class="description">
+      The NBA is expected to add two new teams (Seattle & Las Vegas) as early as the 2028-29 season.
+      This simulator uses <strong>2025-2026 real rosters and contracts</strong> to let you run the
+      expansion draft as if it happened right now.
+    </p>
+  </div>
+
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-number">1</div>
+      <h3>Protection Phase</h3>
+      <p>Each of the 30 existing teams protects up to <strong>8 players</strong>. Protected players are safe and cannot be selected by the expansion teams.</p>
+    </div>
+
+    <div class="step-card">
+      <div class="step-number">2</div>
+      <h3>Expansion Draft</h3>
+      <p>Seattle and Las Vegas take turns picking players from the unprotected pool. They can only take <strong>1 player per team</strong>.</p>
+    </div>
+  </div>
+
+  <div class="cta-section">
+    <button class="start-btn" (click)="startProtecting()">
+      INITIALIZE EXPANSION DRAFT
+      <span class="btn-sub">Load 2025-2026 Rosters</span>
+    </button>
+  </div>
+</div>

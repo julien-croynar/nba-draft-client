@@ -1,0 +1,55 @@
+<div class="team-card" [style.--team-color]="teamColor()">
+  <header class="team-header">
+    <div class="header-content">
+      <h1 class="team-title">
+        <span class="city">{{ teamName() }}</span>
+        <span class="roster-year">Season 2026-2027</span>
+      </h1>
+      <div class="team-badge">OFFICIAL ROSTER</div>
+    </div>
+  </header>
+
+  <section class="team-stats-summary">
+    <div class="stat-pill">
+      <span class="label">Avg. Age</span>
+      <span class="value">{{ averageAge() }}</span>
+    </div>
+    <div class="stat-pill">
+      <span class="label">Avg. Cost</span>
+      <span class="value">{{ averageContractCost() }}</span>
+    </div>
+    <div class="stat-pill">
+      <span class="label">Avg. Length</span>
+      <span class="value">{{ averageContractLength() }}y</span>
+    </div>
+  </section>
+
+  <div class="content-body">
+    <div class="filter-toolbar">
+      <app-position-selector-buttons
+        [positions]="infoSelector"
+        [(currentFilter)]="currentInfoSelected"
+        [colorButton]="teamColor()"
+      ></app-position-selector-buttons>
+    </div>
+
+    <div class="roster-scroll-container">
+      @for (group of sortedGroups(); track group.key) {
+        <div class="position-block">
+          <h2 class="group-title">{{ group.key }}</h2>
+
+          <div class="players-grid">
+            @for (player of group.players; track player.id) {
+              <app-player-single-info
+                [player]="player"
+                [playerInfoSelected]="playersInfoSelected()"
+              ></app-player-single-info>
+            } @empty {
+              <p class="empty-roster-msg">No players in this category</p>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

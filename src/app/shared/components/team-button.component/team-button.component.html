@@ -1,0 +1,11 @@
+<a class="team-nav-link"
+   [class.is-full]="teamFull()"
+   [routerLink]="['/protection', teamData().teamCode]"
+   routerLinkActive="active-route">
+
+  <span class="team-name">{{ teamData().name }}</span>
+
+  @if (teamFull()) {
+    <span class="status-dot"></span>
+  }
+</a>

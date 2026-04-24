@@ -1,0 +1,13 @@
+<div class="position-filter-container" [style.--active-team-color]="colorButton()">
+  @for (pos of positions(); track pos) {
+    <button
+      class="filter-btn"
+      type="button"
+      [class.active]="currentFilter() === pos"
+      [aria-pressed]="currentFilter() === pos"
+      (click)="currentFilter.set(pos)"
+    >
+      {{ pos }}
+    </button>
+  }
+</div>

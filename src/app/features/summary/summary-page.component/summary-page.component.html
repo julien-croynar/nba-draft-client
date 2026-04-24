@@ -1,0 +1,31 @@
+<div class="summary-layout fade-in">
+  <header class="summary-header">
+    <button class="btn-back" (click)="goBack()">← Back</button>
+
+    <h1 class="main-title">
+      <span class="nba-tag">NBA EXPANSION DRAFT</span>
+      FINAL ROSTERS 2026-2027
+    </h1>
+    <div class="divider"></div>
+  </header>
+
+  <main class="summary-grid">
+    <app-team-summary
+      class="team-column"
+      [players]="this.draftSelectionService.seattlePlayers()"
+      teamCode="SEA"
+    ></app-team-summary>
+
+    <app-team-summary
+      class="team-column"
+      [players]="this.draftSelectionService.lasVegasPlayers()"
+      teamCode="LV"
+    ></app-team-summary>
+  </main>
+
+  <footer class="summary-actions">
+    <button class="restart-btn" (click)="restart()">
+      <span class="btn-icon">↺</span> NEW SIMULATION
+    </button>
+  </footer>
+</div>

@@ -1,0 +1,62 @@
+<div class="protection-layout fade-in">
+  <aside class="team-sidebar">
+    <div class="sidebar-header">
+      <h3>Franchises</h3>
+      <h3 [class.all-ready]="progressInfo().isComplete">
+        Ready  {{ progressInfo().fullTeams }} / {{ progressInfo().totalTeams }}
+      </h3>
+    </div>
+
+    <div class="team-list">
+      @for (team of teams(); track team.teamCode) {
+        <app-team-button
+          [teamData]="team"
+          [teamFull]="isTeamFull(team.teamCode)"> </app-team-button>
+      }
+    </div>
+  </aside>
+
+  <div class="main-content">
+    <header class="control-panel">
+      <div class="header-info">
+        <h2>
+          {{ selectedTeam()?.name }}
+          <span class="subtitle">Protection Phase</span>
+        </h2>
+
+        <div class="counter" [class.is-full]="currentProtectedCount() === maxForCurrentTeam()">
+          Protected players :
+          <strong>{{ currentProtectedCount() }}</strong> / {{ maxForCurrentTeam() }}
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn-secondary" (click)="toggleAutoSelectPlayers()">
+          {{ progressInfo().isComplete ? 'CLEAR ALL' : 'AUTO SELECT ALL' }}
+        </button>
+
+        <button
+          class="btn-hero"
+          [disabled]="!progressInfo().isComplete"
+          (click)="startDrafting()">
+          START DRAFTING
+        </button>
+      </div>
+    </header>
+
+    <main class="scroll-area">
+      <div class="player-selection-container">
+        @for (player of selectedPlayers(); track player.id) {
+          <app-player-protection
+            [player]="player"
+            [team]="selectedTeam()"
+            [playerProtection]="isProtected(player.id)"
+            (click)="toggleProtection(player.id)">
+          </app-player-protection>
+        } @empty {
+          <div class="empty-state">No players found for this team.</div>
+        }
+      </div>
+    </main>
+  </div>
+</div>

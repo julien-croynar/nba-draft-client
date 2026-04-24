@@ -1,0 +1,174 @@
+:host {
+  display: block;
+  flex: 1;
+  min-width: 300px;
+  height: 100%;
+}
+
+.team-card {
+  --local-color: var(--team-color, var(--nba-blue));
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  overflow: hidden;
+  box-shadow: var(--shadow-main);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.team-header {
+  padding: var(--space-xl);
+  background: linear-gradient(180deg, rgba(0,0,0,0.4) 0%, transparent 100%), var(--bg-surface);
+  border-bottom: 4px solid var(--local-color);
+  position: relative;
+}
+
+.team-title .city {
+  display: block;
+  font-size: 2.4rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1.5px;
+  color: #fff;
+  line-height: 0.9;
+}
+
+.roster-year {
+  font-size: 0.8rem;
+  color: var(--local-color);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 800;
+  margin-top: 8px;
+  display: block;
+}
+
+.team-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 0.6rem;
+  font-weight: 900;
+  padding: 4px 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px;
+  color: var(--text-muted);
+}
+
+.team-stats-summary {
+  display: flex;
+  background: rgba(0,0,0,0.2);
+  padding: var(--space-lg);
+  border-bottom: 1px solid var(--border-color);
+  gap: var(--space-md);
+}
+
+.stat-pill {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-sm);
+  background: rgba(255,255,255,0.02);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+.stat-pill .label {
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+.stat-pill .value {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #fff;
+}
+
+.filter-toolbar {
+  padding: var(--space-md);
+  display: flex;
+  justify-content: center;
+  background: rgba(0,0,0,0.1);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.content-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.roster-scroll-container {
+  padding: var(--space-lg);
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  padding-bottom: 10px;
+}
+
+.roster-scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.roster-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.roster-scroll-container::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 10px;
+}
+
+.roster-scroll-container:hover::-webkit-scrollbar-thumb {
+  background: var(--local-color);
+  box-shadow: 0 0 10px var(--local-color);
+}
+
+.position-block {
+  margin-bottom: var(--space-xl);
+}
+
+.group-title {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin-bottom: var(--space-md);
+  color: var(--local-color);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.group-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--local-color), transparent);
+  opacity: 0.2;
+}
+
+.players-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.empty-roster-msg {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-align: center;
+  padding: var(--space-lg);
+  border: 1px dashed var(--border-color);
+  border-radius: var(--radius-md);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}

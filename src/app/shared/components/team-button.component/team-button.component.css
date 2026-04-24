@@ -1,0 +1,69 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.team-nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 16px;
+  margin-bottom: 2px;
+
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+
+  text-decoration: none;
+  color: var(--text-muted);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.team-nav-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--nba-blue);
+  color: #fff;
+  transform: translateX(4px);
+}
+
+.active-route {
+  background: var(--bg-surface) !important;
+  border-color: var(--nba-blue) !important;
+  color: #fff !important;
+  box-shadow: inset 4px 0 0 var(--nba-blue);
+}
+
+.team-nav-link:active {
+  transform: scale(0.97);
+}
+
+.is-full {
+  color: var(--success);
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  background-color: var(--success);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--success);
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.team-nav-link:hover:not(.is-full)::after {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+.team-name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

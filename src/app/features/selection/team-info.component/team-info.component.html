@@ -1,0 +1,69 @@
+<div class="team-card" [style.--team-color]="teamColor()">
+  <header class="team-header">
+    <h1 class="team-title">
+      <span class="city">{{ teamName() }}</span>
+    </h1>
+  </header>
+
+  <section class="salary-section">
+    <div class="salary-labels">
+      <div class="stat-item">
+        <span class="label">Total Committed</span>
+        <span class="value committed">{{ formattedTotalSalary() }}</span>
+      </div>
+      <div class="stat-item text-right">
+        <span class="label">Target Range</span>
+        <span class="value target">$100M – $120M</span>
+      </div>
+    </div>
+
+    <div class="progress-container"
+         role="progressbar"
+         [attr.aria-valuenow]="totalSalary()"
+         aria-valuemin="0"
+         aria-valuemax="{{this.SALARY_CAP}}">
+      <div class="target-zone"></div>
+      <div class="progress-bar" [style.width.%]="salaryProgress()"></div>
+    </div>
+
+    <div class="salary-footer">
+      @if (remainingPicks() > 0) {
+        <span class="trend-icon">↗</span>
+        ~{{ averageSalaryAvailable() }} avg. needed over {{ remainingPicks() }} picks
+      } @else {
+        <span class="status-complete">ROSTER COMPLETE</span>
+      }
+    </div>
+  </section>
+
+  <section class="roster-management">
+    <h3 class="section-label">Roster Management</h3>
+
+    <div class="selector-wrapper">
+      <app-position-selector-buttons
+        [positions]="infoSelector"
+        [(currentFilter)]="currentInfoSelected"
+        [colorButton]="teamColor()"
+      >
+      </app-position-selector-buttons>
+    </div>
+
+    <div class="roster-scroll-area">
+      @for (posGroup of sortedGroups(); track posGroup.key) {
+        <div class="pos-group">
+          <h2 class="pos-title">{{ posGroup.key }}</h2>
+          <div class="players-list">
+            @for (player of posGroup.players; track player.id) {
+              <app-player-single-info
+                [player]="player"
+                [playerInfoSelected]="playersInfoSelected()"
+              ></app-player-single-info>
+            } @empty {
+              <p class="empty-msg">No players drafted</p>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </section>
+</div>

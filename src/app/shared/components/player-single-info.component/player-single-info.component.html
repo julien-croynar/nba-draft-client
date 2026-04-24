@@ -1,0 +1,10 @@
+<div class="player-micro-card">
+  <div class="player-thumb">
+    <img [src]="playerImageUrl()" [alt]="player().name" class="headshot">
+  </div>
+
+  <div class="player-content">
+    <span class="name">{{ player().name }}</span>
+    <span class="info-badge">{{ currentPlayerInfo() }}</span>
+  </div>
+</div>

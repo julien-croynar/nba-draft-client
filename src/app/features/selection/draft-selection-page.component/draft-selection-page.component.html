@@ -1,0 +1,60 @@
+<div class="page-container fade-in" [style.--active-color]="turnInfo().color">
+  <header class="draft-header">
+    <button class="btn-back" (click)="goBack()">← Back</button>
+    <div class="header-top">
+      <div class="turn-indicator">
+        <p class="subtitle">Current Pick</p>
+        <h1 class="team-name" [style.color]="turnInfo().color">
+          {{ turnInfo().name }} Turn
+        </h1>
+      </div>
+
+      <div class="pick-counter">
+        <div class="counter-display">
+          <div class="count">{{ picksMade() }}<span class="total"> / 28</span></div>
+          <div class="label">picks made</div>
+        </div>
+
+        <div class="counter-actions">
+          <button class="btn-cancel" [disabled]="picksMade() === 0" (click)="cancelLastPick()">
+            Cancel last pick
+          </button>
+          <button class="btn-validate" [disabled]="!isDraftCompleted()" (click)="validateDraft()">
+            Validate draft
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="wrapper">
+    <app-team-info class="side-panel" teamCode="SEA" [players]="seattlePlayers()"></app-team-info>
+
+    <div class="players-draft">
+      <div class="filters-toolbar">
+        <app-position-selector-buttons
+          [positions]="['ALL', 'G', 'F', 'C']"
+          [(currentFilter)]="currentSelection"
+          [colorButton]="turnInfo().color"
+        ></app-position-selector-buttons>
+
+        <app-sorting-selector
+          [sortingInputs]="sortOptions"
+          [(currentFilter)]="currentSorting">
+        </app-sorting-selector>
+      </div>
+
+      <div class="players-list">
+        @for (player of playersShow(); track player.id) {
+          <app-player-selection
+            [player]="player"
+            (selectedPlayer)="handlePlayerSelected($event)"
+            [isDraftCompleted]="isDraftCompleted()"
+          ></app-player-selection>
+        }
+      </div>
+    </div>
+
+    <app-team-info class="side-panel" teamCode="LV" [players]="lasVegasPlayers()"></app-team-info>
+  </div>
+</div>
