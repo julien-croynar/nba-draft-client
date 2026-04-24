@@ -5,10 +5,18 @@
 
 # NBA Draft Client
 
+**Live Demo:** [nba-expansion-draft.fr](https://nba-expansion-draft.fr/home)
+
 A modern, responsive interface built with Angular to manage and visualize the NBA Expansion Draft process.
 
+![nba-expasion-draft-selectScreen.png](public/nba-expasion-draft-selectScreen.png)
+
 This project serves as the **Frontend** layer of the NBA Draft ecosystem. 
+
 It provides a seamless user experience for exploring player statistics, managing payroll budgets, and simulating the drafting process for a new franchise. 
+
+![nba-expasion-draft-endScreen.png](public/nba-expasion-draft-endScreen.png)
+
 It natively consumes data exposed by the **NBA Draft API** (`https://github.com/julien-croynar/nba-draft-api`).
 
 ## Key Features
