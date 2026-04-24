@@ -32,8 +32,6 @@ It natively consumes data exposed by the **NBA Draft API** (`https://github.com/
 * **Angular Material** (UI Components & Design System)
 * **TypeScript** (Strict typing and Path Aliases)
 * **RxJS** (Asynchronous data stream management)
-* **Nginx** (Reverse Proxy & Static file server)
-* **Docker & Docker Compose** (Deployment orchestration)
 
 ## Project Structure
 
